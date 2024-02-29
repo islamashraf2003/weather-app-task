@@ -30,10 +30,14 @@ environment:
 dependencies:
   bloc: ^8.1.3
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^5.4.1
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.11
+  geolocator: ^11.0.0
   go_router: ^13.2.0
   tbib_splash_screen: ^1.0.0
 
@@ -45,7 +49,7 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/images/logo_app/logo_app.png"
-  
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

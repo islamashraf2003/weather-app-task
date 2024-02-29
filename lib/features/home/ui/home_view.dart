@@ -71,7 +71,7 @@ class HomeView extends StatelessWidget {
                     const DaysOfForecast()
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -11,25 +11,22 @@ class ImageAndTextWeatherInfo extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          verticalSpace(4),
-          Image.asset(
-            image,
-            width: 35,
+    return Column(
+      children: [
+        verticalSpace(4),
+        Image.asset(
+          image,
+          width: 35,
+          color: color,
+        ),
+        verticalSpace(8),
+        Text(
+          text,
+          style: StylesManager.font16Grey.copyWith(
             color: color,
           ),
-          verticalSpace(8),
-          Text(
-            text,
-            style: StylesManager.font16Grey.copyWith(
-              color: color,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
-    ;
   }
 }
