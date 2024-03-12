@@ -1,28 +1,31 @@
 import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable {
-  final String? icon;
+  final int? id;
+  final String? main;
   final String? description;
-  final int? code;
+  final String? icon;
 
-  const Weather({this.icon, this.description, this.code});
+  const Weather({this.id, this.main, this.description, this.icon});
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
-      icon: json['icon'] as String?,
+      id: json['id'] as int?,
+      main: json['main'] as String?,
       description: json['description'] as String?,
-      code: json['code'] as int?,
+      icon: json['icon'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'icon': icon,
+      'id': id,
+      'main': main,
       'description': description,
-      'code': code,
+      'icon': icon,
     };
   }
 
   @override
-  List<Object?> get props => [icon, description, code];
+  List<Object?> get props => [id, main, description, icon];
 }

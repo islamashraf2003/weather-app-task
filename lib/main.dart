@@ -1,26 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_task/core/router/routing.dart';
+import 'package:weather_app_task/features/home/data/repo/home_implementaions.dart';
+import 'package:weather_app_task/features/home/data/repo/home_repo.dart';
+import 'package:weather_app_task/features/home/logic/Search_Cubit/search_cubit.dart';
 
 import 'core/theming/app_theming.dart';
-import 'features/home/ui/home_view.dart';
 
 void main() {
-  // void getCurrentPosition() async {
-  //   LocationPermission permission = await Geolocator.checkPermission();
-  //   if (permission == LocationPermission.denied ||
-  //       permission == LocationPermission.deniedForever) {
-  //     log("permission not given");
-  //     LocationPermission asked = await Geolocator.requestPermission();
-  //   } else {
-  //     Position currentPosition = await Geolocator.getCurrentPosition(
-  //         desiredAccuracy: LocationAccuracy.best);
-  //     log("Longitude: " + currentPosition.longitude.toString());
-  //     log("Latitude: " + currentPosition.latitude.toString());
-  //   }
-  // }
-
+  WidgetsFlutterBinding.ensureInitialized();
+  HomeRepo homeRepo = HomeImpl();
+  homeRepo.getWeatherDaysForecastByCityName(cityName: "cairo");
   runApp(const WeatherApp());
 }
 
@@ -29,12 +19,17 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheming.lightTheme,
-      darkTheme: AppTheming.darkTheme,
-      debugShowCheckedModeBanner: false,
-      home: const SafeArea(
-        child: HomeView(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SearchCubit>(
+          create: (context) => SearchCubit(),
+        ),
+      ],
+      child: MaterialApp.router(
+        routerConfig: AppRouting.router,
+        theme: AppTheming.lightTheme,
+        darkTheme: AppTheming.darkTheme,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

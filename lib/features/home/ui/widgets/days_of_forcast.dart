@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/helper/spacing.dart';
-import 'single_info_day.dart';
-import 'titke_days_of_forecast.dart';
+import '../../../../core/theming/colors_manager.dart';
+import '../../../../core/theming/images_manager.dart';
+import '../../../../core/theming/styles_manager.dart';
+import '../../data/current_weather/current_weather.dart';
+import 'title_days_of_forecast.dart';
 
 class DaysOfForecast extends StatelessWidget {
-  const DaysOfForecast({super.key});
+  const DaysOfForecast({Key? key, required this.currentWeatherList})
+      : super(key: key);
+
+  final List<CurrentWeather> currentWeatherList;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +32,54 @@ class DaysOfForecast extends StatelessWidget {
           verticalSpace(10),
           Expanded(
             child: ListView.builder(
-              itemCount: 7,
+              itemCount: currentWeatherList.length,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(bottom: 20),
-                  child: SingleInfoDay(),
+                final dateTime =
+                    DateTime.parse(currentWeatherList[index].dtTxt!);
+                final dayName = DateFormat('EEEE').format(dateTime);
+
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              dayName,
+                              style: StylesManager.font20white,
+                            ),
+                            Image.asset(ImagesManager.icon3),
+                            Text(
+                              "-2°C",
+                              style: StylesManager.font20Grey,
+                            ),
+                            Text(
+                              "5°C",
+                              style: StylesManager.font20white,
+                            ),
+                          ],
+                        ),
+                        verticalSpace(8),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                thickness: 1,
+                                color: ColorManager.mediuGrey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );

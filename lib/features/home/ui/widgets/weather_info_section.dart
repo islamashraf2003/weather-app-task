@@ -3,13 +3,15 @@ import 'package:weather_app_task/core/helper/spacing.dart';
 import 'package:weather_app_task/core/theming/colors_manager.dart';
 import 'package:weather_app_task/core/theming/images_manager.dart';
 import 'package:weather_app_task/core/theming/styles_manager.dart';
+import 'package:weather_app_task/features/home/data/current_weather/current_weather.dart';
 
-import 'icon_and_temp_info.dart';
+import '../../../../core/helper/convert_temp.dart';
 import 'image_and_text_whear_info.dart';
 
 class WeatherInfoSection extends StatelessWidget {
-  const WeatherInfoSection({Key? key}) : super(key: key);
-
+  const WeatherInfoSection({Key? key, required this.currentWeatherInfoList})
+      : super(key: key);
+  final List<CurrentWeather> currentWeatherInfoList;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,22 +37,42 @@ class WeatherInfoSection extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: currentWeatherInfoList.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: Flexible(
-                          child: IconAndTempInfo(),
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Text(
+                                  "${calcTime(currentWeatherInfoList[index].dt ?? 0)}:00",
+                                  style: StylesManager.font16White,
+                                ),
+                                verticalSpace(4),
+                                Image.asset(
+                                  ImagesManager.icon,
+                                  width: 50,
+                                ),
+                                verticalSpace(2),
+                                Text(
+                                  "${calcTemp(currentWeatherInfoList[index].main!.temp!)}°C",
+                                  style: StylesManager.font16White,
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                      verticalSpace(4),
-                      const Expanded(
+                      verticalSpace(6),
+                      Expanded(
                         child: Flexible(
                           child: ImageAndTextWeatherInfo(
-                            text: "20 km/h",
+                            text:
+                                "${currentWeatherInfoList[index].wind!.speed} km/h",
                             image: ImagesManager.icon2,
                           ),
                         ),

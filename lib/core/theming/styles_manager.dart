@@ -12,7 +12,7 @@ abstract class StylesManager {
     fontSize: 22,
     fontWeight: FontWeightManager.semiBold,
   );
-  static TextStyle font125Grey = TextStyle(
+  static TextStyle font25Grey = TextStyle(
     fontSize: 25,
     fontWeight: FontWeightManager.regular,
     color: ColorManager.grey,
