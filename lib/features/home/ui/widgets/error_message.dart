@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weather_app_task/core/helper/spacing.dart';
 import 'package:weather_app_task/core/router/routing.dart';
-import 'package:weather_app_task/core/theming/styles_manager.dart';
 
 class ErrorMessage extends StatelessWidget {
   const ErrorMessage({super.key});

@@ -1,5 +1,5 @@
 abstract class ImagesManager {
-  static const String icon = "assets/images/Heavy cloud.png";
-  static const String icon2 = "assets/images/Cloudy.png";
-  static const String icon3 = "assets/images/test.png";
+  static const String rain = "assets/images/rain.png";
+  static const String windsImage = "assets/images/winds.png";
+  static const String test = "assets/images/test.png";
 }

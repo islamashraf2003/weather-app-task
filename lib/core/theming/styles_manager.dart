@@ -42,6 +42,11 @@ abstract class StylesManager {
     fontWeight: FontWeightManager.semiBold,
     color: ColorManager.blue,
   );
+  static TextStyle font36Red = TextStyle(
+    fontSize: 60,
+    fontWeight: FontWeightManager.semiBold,
+    color: ColorManager.red,
+  );
   static TextStyle font20Blue = TextStyle(
     fontSize: 20,
     fontWeight: FontWeightManager.medium,

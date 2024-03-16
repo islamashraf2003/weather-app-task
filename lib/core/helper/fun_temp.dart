@@ -14,3 +14,13 @@ extension StringExtension on String {
     return "${this[0].toUpperCase()}${this.substring(1)}";
   }
 }
+
+String categorizeTemperature(int temperature) {
+  if (temperature > 25) {
+    return 'Hot';
+  } else if (temperature >= 15 && temperature <= 25) {
+    return 'Medium';
+  } else {
+    return 'Low';
+  }
+}

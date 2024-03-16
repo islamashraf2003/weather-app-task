@@ -13,13 +13,12 @@ class ImageAndTextWeatherInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        verticalSpace(4),
+        verticalSpace(8),
         Image.asset(
           image,
           width: 35,
           color: color,
         ),
-        verticalSpace(8),
         Text(
           text,
           style: StylesManager.font16Grey.copyWith(

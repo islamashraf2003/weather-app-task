@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:weather_app_task/features/home/data/current_weather/current_weather.dart';
 
-import '../../../../core/helper/convert_temp.dart';
+import '../../../../core/helper/fun_temp.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/theming/styles_manager.dart';
 import 'app_bar_section.dart';
@@ -22,7 +22,6 @@ class WeatherInfoSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String capitalizedCityName = cityName.capitalize();
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
@@ -45,8 +44,8 @@ class WeatherInfoSuccess extends StatelessWidget {
                 verticalSpace(10),
                 Text(
                   "${calcTemp(currentWeather[0].main!.temp!)}°C",
-                  //TODO:lesssa Customize color based on temperature
-                  style: StylesManager.font36Blue,
+                  style: checkTemp(calcTemp(currentWeather[0].main!.temp!)),
+                  //3ashan hene hat4ayar 3ala hasab el temp
                 ),
                 Text(
                   currentWeather[0].weather![0].main!,
@@ -54,7 +53,7 @@ class WeatherInfoSuccess extends StatelessWidget {
                 ),
                 verticalSpace(10),
                 Text(
-                  "${calcTemp(currentWeather[0].main!.tempMin!)}°C/${calcTemp(currentWeather[0].main!.tempMax!)}°C",
+                  "${calcTemp(currentWeather[0].main!.tempMin!)}°C",
                   style: StylesManager.font20Blue,
                 ),
                 verticalSpace(10),
@@ -71,5 +70,13 @@ class WeatherInfoSuccess extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  TextStyle checkTemp(int temperature) {
+    if (temperature > 25) {
+      return StylesManager.font36Red;
+    } else {
+      return StylesManager.font36Blue;
+    }
   }
 }

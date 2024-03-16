@@ -5,7 +5,8 @@ import 'package:weather_app_task/core/theming/images_manager.dart';
 import 'package:weather_app_task/core/theming/styles_manager.dart';
 import 'package:weather_app_task/features/home/data/current_weather/current_weather.dart';
 
-import '../../../../core/helper/convert_temp.dart';
+import '../../../../core/helper/fun_temp.dart';
+import '../../../../core/helper/image_temp.dart';
 import 'image_and_text_whear_info.dart';
 
 class WeatherInfoSection extends StatelessWidget {
@@ -52,12 +53,16 @@ class WeatherInfoSection extends StatelessWidget {
                                   "${calcTime(currentWeatherInfoList[index].dt ?? 0)}:00",
                                   style: StylesManager.font16White,
                                 ),
-                                verticalSpace(4),
-                                Image.asset(
-                                  ImagesManager.icon,
-                                  width: 50,
+                                verticalSpace(10),
+                                Flexible(
+                                  child: Image.asset(
+                                    getImage(currentWeatherInfoList[index]
+                                        .weather![0]
+                                        .main!),
+                                    width: 60,
+                                  ),
                                 ),
-                                verticalSpace(2),
+                                verticalSpace(8),
                                 Text(
                                   "${calcTemp(currentWeatherInfoList[index].main!.temp!)}°C",
                                   style: StylesManager.font16White,
@@ -67,21 +72,18 @@ class WeatherInfoSection extends StatelessWidget {
                           ),
                         ),
                       ),
-                      verticalSpace(6),
+                      verticalSpace(20),
                       Expanded(
-                        child: Flexible(
-                          child: ImageAndTextWeatherInfo(
-                            text:
-                                "${currentWeatherInfoList[index].wind!.speed} km/h",
-                            image: ImagesManager.icon2,
-                          ),
+                        child: ImageAndTextWeatherInfo(
+                          text:
+                              "${currentWeatherInfoList[index].wind!.speed}km/h",
+                          image: ImagesManager.windsImage,
                         ),
                       ),
-                      verticalSpace(4),
                       Expanded(
                         child: Flexible(
                           child: ImageAndTextWeatherInfo(
-                            image: ImagesManager.icon2,
+                            image: ImagesManager.rain,
                             text: "0 %",
                             color: ColorManager.blue,
                           ),
