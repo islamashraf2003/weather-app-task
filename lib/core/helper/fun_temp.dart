@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:weather_app_task/core/theming/styles_manager.dart';
+
 int calcTemp(double num) {
   double result = num - 273.15;
   return result.toInt();
@@ -15,12 +18,10 @@ extension StringExtension on String {
   }
 }
 
-String categorizeTemperature(int temperature) {
+TextStyle checkTemp(int temperature) {
   if (temperature > 25) {
-    return 'Hot';
-  } else if (temperature >= 15 && temperature <= 25) {
-    return 'Medium';
+    return StylesManager.font36Red;
   } else {
-    return 'Low';
+    return StylesManager.font36Blue;
   }
 }

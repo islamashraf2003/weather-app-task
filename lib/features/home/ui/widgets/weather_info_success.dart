@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:weather_app_task/features/home/data/current_weather/current_weather.dart';
-
 import '../../../../core/helper/fun_temp.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/theming/styles_manager.dart';
@@ -53,7 +52,7 @@ class WeatherInfoSuccess extends StatelessWidget {
                 ),
                 verticalSpace(10),
                 Text(
-                  "${calcTemp(currentWeather[0].main!.tempMin!)}°C",
+                  "${calcTemp(currentWeather[0].main!.tempMin!)}°C/${calcTemp(currentWeather[0].main!.tempMax!)}°C",
                   style: StylesManager.font20Blue,
                 ),
                 verticalSpace(10),
@@ -70,13 +69,5 @@ class WeatherInfoSuccess extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  TextStyle checkTemp(int temperature) {
-    if (temperature > 25) {
-      return StylesManager.font36Red;
-    } else {
-      return StylesManager.font36Blue;
-    }
   }
 }

@@ -56,6 +56,7 @@ class WeatherInfoSection extends StatelessWidget {
                                 verticalSpace(10),
                                 Flexible(
                                   child: Image.asset(
+                                    color: Colors.blue,
                                     getImage(currentWeatherInfoList[index]
                                         .weather![0]
                                         .main!),

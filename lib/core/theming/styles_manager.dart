@@ -17,6 +17,10 @@ abstract class StylesManager {
     fontWeight: FontWeightManager.regular,
     color: ColorManager.grey,
   );
+  static TextStyle font25 = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeightManager.bold,
+  );
   static TextStyle font20white = TextStyle(
     fontSize: 20,
     fontWeight: FontWeightManager.regular,
