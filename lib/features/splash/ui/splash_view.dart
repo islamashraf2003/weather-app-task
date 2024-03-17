@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:weather_app_task/core/helper/spacing.dart';
 import 'package:weather_app_task/core/router/routing.dart';
 import 'package:weather_app_task/core/theming/colors_manager.dart';
+import 'package:weather_app_task/core/theming/images_manager.dart';
 import 'package:weather_app_task/core/theming/styles_manager.dart';
 
 class SplashView extends StatelessWidget {
@@ -16,7 +17,8 @@ class SplashView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/test.png",
+              ImagesManager.splashViewIcon,
+              color: Colors.yellow,
             ),
             verticalSpace(40),
             Text(

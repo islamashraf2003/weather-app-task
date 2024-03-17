@@ -51,7 +51,7 @@ class DaysOfForecast extends StatelessWidget {
                               dayName,
                               style: StylesManager.font20white,
                             ),
-                            Image.asset(ImagesManager.test),
+                            Image.asset(ImagesManager.splashViewIcon),
                             Text(
                               "-2°C",
                               style: StylesManager.font20Grey,
