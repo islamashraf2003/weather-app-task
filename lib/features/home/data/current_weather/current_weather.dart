@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'city_info.dart';
 import 'clouds.dart';
 import 'coord.dart';
 import 'main.dart';
@@ -15,14 +16,14 @@ class CurrentWeather extends Equatable {
   final Wind? wind;
   final Clouds? clouds;
   final int? dt;
-  final String? dtTxt; // Include dt_txt field
+  final String? dtTxt;
   final Sys? sys;
   final int? timezone;
   final int? id;
-  final String? name;
   final int? cod;
-
+  final City? city;
   const CurrentWeather({
+    this.city,
     this.coord,
     this.weather,
     this.base,
@@ -35,7 +36,6 @@ class CurrentWeather extends Equatable {
     this.sys,
     this.timezone,
     this.id,
-    this.name,
     this.cod,
   });
 
@@ -65,8 +65,10 @@ class CurrentWeather extends Equatable {
           : Sys.fromJson(json['sys'] as Map<String, dynamic>),
       timezone: json['timezone'] as int?,
       id: json['id'] as int?,
-      name: json['name'] as String?,
       cod: json['cod'] as int?,
+      city: json['city'] == null
+          ? null
+          : City.fromJson(json['city'] as Map<String, dynamic>),
     );
   }
 
@@ -84,8 +86,8 @@ class CurrentWeather extends Equatable {
       'sys': sys?.toJson(),
       'timezone': timezone,
       'id': id,
-      'name': name,
       'cod': cod,
+      'city': city?.toJson(), // Updated to serialize CityInfo,
     };
   }
 
@@ -104,7 +106,6 @@ class CurrentWeather extends Equatable {
       sys,
       timezone,
       id,
-      name,
       cod,
     ];
   }

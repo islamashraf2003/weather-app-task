@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:weather_app_task/features/home/ui/home_view.dart';
-import 'package:weather_app_task/features/home/ui/widgets/serach_widget.dart';
+import 'package:weather_app_task/features/home/ui/widgets/searach_widget.dart';
 import '../../features/splash/ui/splash_view.dart';
 
 abstract class AppRouting {
@@ -30,3 +30,12 @@ abstract class AppRouting {
     ],
   );
 }
+/*
+void getLocation(BuildContext context) async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    context
+        .read<LocationCubit>()
+        .getCurrenLocation(lat: position.latitude, lon: position.longitude);
+  }
+*/

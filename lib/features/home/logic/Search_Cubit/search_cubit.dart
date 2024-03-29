@@ -29,4 +29,24 @@ class SearchCubit extends Cubit<SearchState> {
       emit(SearchFailure(errorMessage: e.toString()));
     }
   }
+
+  ///////////////////////
+  Future<void> getCurrenLocation(
+      {required double lat, required double lon}) async {
+    emit(SearchLoading());
+    try {
+      var result = await homeRepo.getWeatherDataByLocation(lat: lat, lon: lon);
+
+      result.fold(
+        (error) {
+          emit(SearchFailure(errorMessage: error.errorMessage));
+        },
+        (success) {
+          emit(SearchSuccess(weatherData: success, lat: lat, lon: lon));
+        },
+      );
+    } catch (e) {
+      emit(SearchFailure(errorMessage: e.toString()));
+    }
+  }
 }

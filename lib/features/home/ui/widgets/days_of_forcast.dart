@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/helper/spacing.dart';
@@ -47,18 +49,34 @@ class DaysOfForecast extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              dayName,
-                              style: StylesManager.font20white,
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                dayName,
+                                style: StylesManager.font20white,
+                              ),
                             ),
-                            Image.asset(ImagesManager.splashViewIcon),
-                            Text(
-                              "-2°C",
-                              style: StylesManager.font20Grey,
+                            Expanded(
+                              flex: 1,
+                              child: Image.asset(
+                                ImagesManager.splashViewIcon,
+                                width: 30,
+                              ),
                             ),
-                            Text(
-                              "5°C",
-                              style: StylesManager.font20white,
+                            horizantalSpace(30),
+                            Expanded(
+                              flex: 1,
+                              child: Text(
+                                "-2°C",
+                                style: StylesManager.font20Grey,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Text(
+                                "5°C",
+                                style: StylesManager.font20white,
+                              ),
                             ),
                           ],
                         ),

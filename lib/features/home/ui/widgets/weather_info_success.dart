@@ -13,14 +13,13 @@ class WeatherInfoSuccess extends StatelessWidget {
   const WeatherInfoSuccess({
     super.key,
     required this.currentWeather,
-    required this.cityName,
+    this.cityName,
   });
   final List<CurrentWeather> currentWeather;
-  final String cityName;
-
+  final String? cityName;
   @override
   Widget build(BuildContext context) {
-    String capitalizedCityName = cityName.capitalize();
+    String capitalizedCityName = cityName?.capitalize() ?? "null";
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(

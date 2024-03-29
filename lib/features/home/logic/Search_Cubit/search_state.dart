@@ -13,8 +13,11 @@ final class SearchLoading extends SearchState {}
 
 final class SearchSuccess extends SearchState {
   final List<CurrentWeather> weatherData;
-  final String cityName;
-  const SearchSuccess({required this.weatherData, required this.cityName});
+  final String? cityName;
+  final double? lon;
+  final double? lat;
+  const SearchSuccess(
+      {required this.weatherData, this.cityName, this.lat, this.lon});
 }
 
 final class SearchFailure extends SearchState {

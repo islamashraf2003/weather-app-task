@@ -12,7 +12,7 @@ final class LocationInitial extends LocationState {}
 final class LocationLoading extends LocationState {}
 
 final class LocationSuccess extends LocationState {
-  final CurrentWeather weatherData;
+  final List<CurrentWeather> weatherData;
 
   const LocationSuccess({required this.weatherData});
 }

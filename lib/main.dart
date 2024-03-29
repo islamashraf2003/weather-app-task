@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_task/core/router/routing.dart';
 import 'package:weather_app_task/features/home/data/repo/home_implementaions.dart';
 import 'package:weather_app_task/features/home/data/repo/home_repo.dart';
+import 'package:weather_app_task/features/home/logic/Location_Cubit/location_cubit.dart';
 import 'package:weather_app_task/features/home/logic/Search_Cubit/search_cubit.dart';
 
 import 'core/theming/app_theming.dart';
@@ -23,6 +24,9 @@ class WeatherApp extends StatelessWidget {
       providers: [
         BlocProvider<SearchCubit>(
           create: (context) => SearchCubit(),
+        ),
+        BlocProvider<LocationCubit>(
+          create: (context) => LocationCubit(),
         ),
       ],
       child: MaterialApp.router(
